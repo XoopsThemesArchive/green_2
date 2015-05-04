@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<{$xoops_langcode}>" lang="<{$xoops_langcode}>">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>" />
+<meta http-equiv="content-language" content="<{$xoops_langcode}>" />
+<meta name="robots" content="<{$xoops_meta_robots}>" />
+<meta name="keywords" content="<{$xoops_meta_keywords}>" />
+<meta name="description" content="<{$xoops_meta_description}>" />
+<meta name="rating" content="<{$xoops_meta_rating}>" />
+<meta name="author" content="<{$xoops_meta_author}>" />
+<meta name="copyright" content="<{$xoops_meta_copyright}>" />
+<meta name="generator" content="XOOPS" />
+<title><{$xoops_sitename}> - <{$xoops_pagetitle}></title>
+<link href="<{$xoops_url}>/favicon.ico" rel="SHORTCUT ICON" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/xoops.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_themecss}>" />
+<!-- RMV: added module header -->
+<{$xoops_module_header}>
+</head>
+
+<body class="body">
+<div class="top_bar">
+	<div class="info">
+		<{php}>echo (date ("y-m-d D"));<{/php}>&nbsp;&nbsp;|&nbsp;
+		<{if $xoops_isuser}>
+			welcome&nbsp;<{$xoops_uname}>!
+		<{else}>
+			<a href="<{$xoops_url}>/register.php">
+			register now?</a>&nbsp;|&nbsp;<a href="<{$xoops_url}>/user.php">lost pass?</a>
+		<{/if}>
+	</div>
+	<div class="form">
+		<{if !$xoops_isuser}>
+			<form action="<{$xoops_url}>/user.php" method="post" style="margin: 0px;">
+			name&nbsp;
+			<input type="text" name="uname" size="18" style="width: 80px; height: 15px;"
+			onMouseOver"this.focus();" onFocus"if(this.value == 'username') this.value ='';" />&nbsp;
+			pass&nbsp;
+			<input type="password" name="pass" size="18" style="width: 80px; height: 15px;" />&nbsp;
+			<input type="hidden" name="op" value="login" />
+			<input type="submit" value="login" style="border: 1px solid #777777; background: #f5f5f5; color: #777777;font-family:arial;" />
+			</form>
+		<{else}>
+			<a href="<{$xoops_url}>/user.php">ステータス</a>&nbsp;&nbsp;|&nbsp;
+			<a href="<{$xoops_url}>/notifications.php">情報通知</a>&nbsp;&nbsp;|&nbsp;
+			<a href="<{$xoops_url}>/viewpmsg.php">受信箱</a>&nbsp;&nbsp;|&nbsp;
+			<a href="<{$xoops_url}>/user.php?op=logout">ログアウト</a>
+			<{if $xoops_isadmin}>|&nbsp;&nbsp;<a href="<{$xoops_url}>/admin.php">管理用</a><{/if}>
+		<{/if}>
+	</div>
+</div>
+<div class="h_space"></div>
+<div id="container">
+	<div class="header">
+		<div class="h1">
+			<div class="sitename">
+				<a href="<{$xoops_url}>/"><h1><{$xoops_sitename}></h1></a>
+			</div>
+		</div>
+		<div class="h2_h3_wrap">
+		<div class="h2">
+		<ul class="head_li">
+			<li class="head_li"><img src="<{$xoops_imageurl}>arrow.gif"  alt="" />&nbsp;<a href="<{$xoops_url}>/">HOME</a></li>
+			<li class="head_li"><img src="<{$xoops_imageurl}>arrow.gif"  alt="" />&nbsp;<a href="<{$xoops_url}>/modules/bulletin">SITE NEWS</a></li>
+			<li class="head_li"><img src="<{$xoops_imageurl}>arrow.gif"  alt="" />&nbsp;<a href="<{$xoops_url}>/modules/xhnewbb">FORUM</a></li>
+			<li class="head_li"><img src="<{$xoops_imageurl}>arrow.gif"  alt="" />&nbsp;<a href="<{$xoops_url}>/modules/html_tag2">HTML</a></li>
+			<li class="head_li"><img src="<{$xoops_imageurl}>arrow.gif"  alt="" />&nbsp;<a href="<{$xoops_url}>/modules/myalbun0">ALBUM</a></li>
+			<li class="head_li"><img src="<{$xoops_imageurl}>arrow.gif"  alt="" />&nbsp;<a href="<{$xoops_url}>/modules/amaxoop2">REFERENCE</a></li>
+			<li class="head_li"><img src="<{$xoops_imageurl}>arrow.gif"  alt="" />&nbsp;<a href="<{$xoops_url}>/modules/mydownloads">DOWNLOAD</a></li>
+			<li class="head_li"><img src="<{$xoops_imageurl}>arrow.gif"  alt="" />&nbsp;<a href="<{$xoops_url}>/modules/mylinks">LINKS</a></li>
+		</ul>
+		</div>
+		<div class="h3">
+		<ul class="head_li">
+			<li class="head_li">&bull;&nbsp;<a href="<{$xoops_url}>/modules/sitemap">site map</a></li>
+			<li class="head_li">&bull;&nbsp;<a href="<{$xoops_url}>/modules/contact">contact</a></li>
+		</ul>
+		</div>
+		</div>
+	</div>
+<div class="h_space"></div>
+	<div class="body_l_and_c">
+		<div id="leftcolumn">
+		<{if $xoops_showlblock == 1}>
+			<{foreach item=block from=$xoops_lblocks}>
+			<{if ! $block.title|strstr:"none"}>
+				<div class="blockTitle"><{$block.title}></div>
+			<{/if}>
+				<div class="blockContent"><{$block.content}></div>
+			<{/foreach}>
+		<{/if}>
+		<{if $xoops_showrblock == 1}>
+			<{foreach item=block from=$xoops_rblocks}>
+			<{if ! $block.title|strstr:"none"}>
+				<div class="blockTitle"><{$block.title}></div>
+			<{/if}>
+				<div class="blockContent"><{$block.content}></div>
+			<{/foreach}>
+		<{/if}>
+		</div>
+		<div id="content"><{$xoops_contents}></div>
+		<div id="centercolumn">
+		<{if $xoops_showcblock == 1}>
+			<div id="centerCcolumn">
+			<{foreach item=block from=$xoops_ccblocks}>
+			<{if ! $block.title|strstr:"none"}>
+				<div class="blockTitle"><{$block.title}></div>
+			<{/if}>
+				<div class="blockContent"><{$block.content}></div>
+			<{/foreach}>
+			</div>
+				<div id="centerLcolumn">
+				<{foreach item=block from=$xoops_clblocks}>
+				<{if ! $block.title|strstr:"none"}>
+					<div class="blockTitle"><{$block.title}></div>
+				<{/if}>
+					<div class="blockContent"><{$block.content}></div>
+				<{/foreach}>
+				</div>
+				<div id="centerRcolumn">
+				<{foreach item=block from=$xoops_crblocks}>
+				<{if ! $block.title|strstr:"none"}>
+					<div class="blockTitle"><{$block.title}></div>
+				<{/if}>
+					<div class="blockContent"><{$block.content}></div>
+				<{/foreach}>
+			</div>
+		<{/if}>
+		</div>
+	</div>
+</div>
+<div class="h_space"></div>
+<div class="top_bar">
+		<div class="f2">
+		<ul class="head_li">
+			<li class="head_li"><a href="<{$xoops_url}>/">home</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+			<li class="head_li"><a href="<{$xoops_url}>/modules/bulletin">site news</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+			<li class="head_li"><a href="<{$xoops_url}>/modules/xhnewbb">forum</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+			<li class="head_li"><a href="<{$xoops_url}>/modules/html_tag2">html</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+			<li class="head_li"><a href="<{$xoops_url}>/modules/myalbun0">album</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+			<li class="head_li"><a href="<{$xoops_url}>/modules/amaxoop2">reference</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+			<li class="head_li"><a href="<{$xoops_url}>/modules/mydownloads">download</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+			<li class="head_li"><a href="<{$xoops_url}>/modules/mylinks">links</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+			<li class="head_li"><a href="<{$xoops_url}>/modules/sitemap">site map</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+			<li class="head_li"><a href="<{$xoops_url}>/modules/contact">contact</a></li>
+		</ul>
+		</div>
+</div>
+<div id="container">
+	<div class="footerbar">
+		<h2><{$xoops_footer}>&nbsp;&nbsp;Theme Designed by&nbsp;&nbsp;<a href="http://portal.expiece.com/" target="_blank">EXTRAFFIC</a></h2>
+	</div>
+</div>
+</body>
+</html>
